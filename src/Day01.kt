@@ -8,7 +8,8 @@ fun main() {
             Pair("6", "six"),
             Pair("7", "seven"),
             Pair("8", "eight"),
-            Pair("9", "nine"))
+            Pair("9", "nine")
+    )
 
     fun part1(input: List<String>): Int {
         val result = input.map {
