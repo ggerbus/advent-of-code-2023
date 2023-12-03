@@ -1,4 +1,9 @@
 fun main() {
+    val cubes = mapOf(
+            "blue" to 14,
+            "red" to 12,
+            "green" to 13
+    )
 
     fun addNumber(row: String, startIndex: Int, endIndex: Int, data: MutableList<Data>, rowIndex: Int) {
         val number = row.substring(startIndex, endIndex + 1).toInt()
