@@ -223,8 +223,7 @@ fun main() {
                 htl.add (readRow(it))
             }
         }
-        var minLocation = -1L
-        input.get(0).substringAfter("seeds: ")
+        val min = input.get(0).substringAfter("seeds: ")
                 .split(" ")
                 .filter {
                     it.isNotBlank()
@@ -235,7 +234,9 @@ fun main() {
                     index % 2 == 0
                 }
                 .map { it.value }
-                .forEach {
+                .parallelStream()
+                .map {
+                    var minLocation = -1L
                     val id = it.first.trim().toLong()
                     val seek = it.second.trim().toLong()
                     val list = mutableListOf<Seed>()
@@ -251,8 +252,9 @@ fun main() {
                             minLocation = location
                         }
                     }
-                }
-        return minLocation
+                    return@map minLocation
+                }.min(Long::compareTo).get()
+        return min
     }
 
     val testInput = readInput("Day05_test")
